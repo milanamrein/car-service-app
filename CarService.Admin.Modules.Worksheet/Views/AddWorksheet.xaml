@@ -1,0 +1,141 @@
+﻿<UserControl x:Class="CarService.Admin.Modules.Worksheet.Views.AddWorksheet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarService.Admin.Modules.Worksheet.Views"
+             xmlns:partials="clr-namespace:CarService.Admin.Modules.Worksheet.Views.Partials"
+             xmlns:sharedConverters="clr-namespace:CarService.Admin.Infrastructure.ValueConverters;assembly=CarService.Admin.Infrastructure"
+             xmlns:sharedViews="clr-namespace:CarService.Admin.Infrastructure.Views;assembly=CarService.Admin.Infrastructure"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CarService.Admin.Infrastructure;component/Styles/SharedResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Messages -->
+        <Border Grid.Row="0">
+            <!-- Error message box -->
+            <sharedViews:ErrorMessageBox />
+        </Border>
+        
+        <!-- Header -->
+        <Border Grid.Row="1"
+                BorderBrush="{StaticResource PrimaryDarkBrush}"
+                BorderThickness="0 0 0 2">
+            <StackPanel Orientation="Vertical">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <!-- Title -->
+                    <TextBlock Text="{StaticResource FontAwesomeFileText}"
+                               Style="{StaticResource TextBlockIconLargeAccentMain}" />
+                    <TextBlock Text="Worksheet:"
+                               Style="{StaticResource MenuTitle}"
+                               Margin="5 0 0 0" />
+
+                </StackPanel>
+
+                <!-- Progress bar -->
+                <ProgressBar IsIndeterminate="True"
+                             Style="{StaticResource MainProgressBar}"
+                             Visibility="{Binding IsLoading, 
+                                Converter={sharedConverters:IsLoadingVisibilityValueConverter}}" />
+
+            </StackPanel>
+        </Border>
+
+        <!-- Table -->
+        <Border Grid.Row="2" Padding="15" 
+                Visibility="{Binding IsLoading, 
+                    Converter={sharedConverters:IsLoadedVisibilityValueConverter}}">
+            <Border BorderThickness="1" BorderBrush="Black" Background="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Header -->
+                    <partials:WorksheetTableHeader Grid.Row="0" />
+
+                    <!-- Body -->
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Materials and components table -->
+                        <partials:WorksheetTable Grid.Row="0" />
+
+                        <!-- Total price -->
+                        <partials:TotalPrice Grid.Row="1" />
+
+                    </Grid>
+
+                    <!-- Confirmation buttons -->
+                    <Border Grid.Row="2"
+                            BorderBrush="Black"
+                            BorderThickness="0 1 0 0"
+                            Visibility="{Binding AddedMaterials.Count,
+                                Converter={sharedConverters:CountToVisibilityValueConverter},
+                                ConverterParameter=this}">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Horizontal" 
+                                            Margin="10" Grid.Column="1">
+
+                                <Button Margin="0 0 5 0"
+                                            Style="{StaticResource ButtonConfirmation}"
+                                            Command="{Binding ConfirmWorksheetCommand}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{StaticResource FontAwesomeSuccess}"
+                                                       Style="{StaticResource SuccessMessageIcon}" />
+                                        <TextBlock Text="Confirm" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Margin="5 0 0 0"
+                                            Style="{StaticResource ButtonCancel}"
+                                            Command="{Binding NavigateCommand}"
+                                            CommandParameter="Reservations">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{StaticResource FontAwesomeCancel}"
+                                                       Style="{StaticResource ErrorMessageIcon}" 
+                                                       Foreground="White" />
+                                        <TextBlock Text="Cancel" />
+                                    </StackPanel>
+                                </Button>
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+            </Border>
+        </Border>
+    </Grid>
+
+</UserControl>

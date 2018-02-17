@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="CarService.Admin.Modules.Worksheet.Views.Partials.WorksheetsListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarService.Admin.Modules.Worksheet.Views.Partials"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CarService.Admin.Infrastructure;component/Styles/SharedResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border Background="{StaticResource SecondaryVeryLightBrush}"
+            Padding="15" MaxHeight="350"
+            Margin="0 0 10 10">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Worksheet for -->
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Worksheet for:" Grid.Row="0"
+                           Style="{StaticResource ReservationDetails}" />
+                <TextBlock Text="{Binding Partner.FullName}" Grid.Row="1"
+                           Style="{StaticResource ReservationDetails}"
+                           FontSize="{StaticResource FontSizeRegular}"
+                           Padding="10 0 0 0" />
+                
+            </Grid>
+
+            <!-- FileText icon -->
+            <Border Grid.Row="1"
+                    BorderThickness="0 1 0 1"
+                    BorderBrush="{StaticResource SecondaryLightBrush}"
+                    Margin="0 10 0 10" Padding="0 10 0 10">
+                <TextBlock Text="{StaticResource FontAwesomeFileText}"
+                       Style="{StaticResource TextBlockIconLargeAccentMain}"
+                       HorizontalAlignment="Center"
+                       FontSize="90" />
+            </Border>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Date and Hour -->
+                <StackPanel Grid.Row="0"
+                            Orientation="Vertical" 
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="Reservation date:" 
+                               Style="{StaticResource ReservationDetails}"
+                               FontSize="12" />
+                    <TextBlock Text="{Binding Reservation.Time}"
+                               Style="{StaticResource ReservationDetails}"
+                               Padding="10 0 0 0" />
+                </StackPanel>
+
+                <!-- See details button -->
+                <Button Grid.Row="1" Content="See details"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource ButtonAccentAverage}"
+                        Command="{Binding DataContext.ToWorksheetCommand,
+                            RelativeSource={RelativeSource Mode=FindAncestor,
+                                AncestorLevel=2,
+                                AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding}" />
+
+            </Grid>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>

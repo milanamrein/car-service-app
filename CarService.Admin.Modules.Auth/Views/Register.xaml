@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="CarService.Admin.Modules.Auth.Views.Register"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarService.Admin.Modules.Auth.Views"
+             xmlns:propa="clr-namespace:CarService.Admin.Modules.Auth.Attached_Properties"
+             xmlns:sharedConverters="clr-namespace:CarService.Admin.Infrastructure.ValueConverters;assembly=CarService.Admin.Infrastructure"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CarService.Admin.Infrastructure;component/Styles/SharedResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource AuthBox}">
+
+        <StackPanel Width="200"
+                    HorizontalAlignment="Center">
+
+            <!-- Sign Up -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0 10 0 15">
+                <TextBlock Text="Sign Up" 
+                           Style="{StaticResource MenuTitle}" />
+                <TextBlock Text="{StaticResource FontAwesomeUserPlus}"
+                           Style="{StaticResource TextBlockIconLargeAccentMain}" />
+            </StackPanel>
+            
+            <!-- Progress bar -->
+            <ProgressBar IsIndeterminate="True"
+                         Style="{StaticResource DefaultProgressBar}"
+                         Visibility="{Binding IsButtonEnabled, 
+                            Converter={sharedConverters:IsLoadedVisibilityValueConverter}}" />
+
+            <!-- List of error messages -->
+            <ItemsControl ItemsSource="{Binding Messages}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <!-- Error message -->
+                        <Border Padding="5 0 5 0">
+                            <DockPanel LastChildFill="True">
+                                <TextBlock DockPanel.Dock="Left"
+                                           Text="{StaticResource FontAwesomeError}"
+                                           Style="{StaticResource ErrorMessageIcon}" />
+                                <TextBlock Text="{Binding}"
+                                           Style="{StaticResource ErrorMessage}"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center" />
+                            </DockPanel>
+                        </Border>
+                        
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
+            <!-- First name -->
+            <Label Content="First Name"
+                   Style="{StaticResource AuthLabel}" />
+            <TextBox Style="{StaticResource AuthTextbox}" Text="{Binding NewUser.FirstName}" />
+
+            <!-- Last name -->
+            <Label Content="Last Name"
+                   Style="{StaticResource AuthLabel}" />
+            <TextBox Style="{StaticResource AuthTextbox}" Text="{Binding NewUser.LastName}" />
+
+            <!-- Username -->
+            <Label Content="Username"
+                   Style="{StaticResource AuthLabel}" />
+            <TextBox Style="{StaticResource AuthTextbox}" Text="{Binding NewUser.Username}" />
+
+            <!-- Password -->
+            <Label Content="Password"
+                   Style="{StaticResource AuthLabel}" />
+            <PasswordBox Style="{StaticResource PasswordBoxStyle}"
+                         propa:PasswordBoxAttachedProperties.EncryptedPassword="{Binding NewUser.Password, 
+                            Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         PasswordChanged="PasswordBox_PasswordChanged"/>
+
+            <!-- Password again -->
+            <Label Content="Password again" 
+                   Style="{StaticResource AuthLabel}" />
+            <PasswordBox Style="{StaticResource PasswordBoxStyle}" 
+                         propa:PasswordBoxAttachedProperties.EncryptedPassword="{Binding NewUser.ConfirmPassword, 
+                            Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         PasswordChanged="PasswordAgainBox_PasswordChanged" />
+
+            <!-- Sign Up button -->
+            <Button Content="Sign Up"
+                    Style="{StaticResource ButtonBig}"
+                    Command="{Binding RegisterCommand}"
+                    IsEnabled="{Binding IsButtonEnabled}" />
+
+            <!-- To login page -->
+            <Button Content="I already have an account"
+                    Style="{StaticResource ButtonHoverless}"
+                    Command="{Binding NavigateCommand}" 
+                    CommandParameter="Login" 
+                    IsEnabled="{Binding IsButtonEnabled}" />
+
+        </StackPanel>
+
+    </Border>
+
+</UserControl>

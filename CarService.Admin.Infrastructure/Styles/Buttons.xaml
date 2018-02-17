@@ -1,0 +1,532 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CarService.Admin.Infrastructure.Styles">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+        <ResourceDictionary Source="Fonts.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Base button style -->
+    <Style TargetType="{x:Type Button}" x:Key="BaseButtonStyle">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="LightGray" />
+                <Setter Property="Foreground" Value="Black" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Navigation button style -->
+    <Style TargetType="{x:Type Button}" x:Key="NavigationButton" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="BorderThickness" Value="5 0 0 0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryMainBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Padding="{TemplateBinding Padding}"
+                            Cursor="{TemplateBinding Cursor}">
+
+                        <ContentPresenter />
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{StaticResource PrimaryDarkBrush}" />
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+    
+    <!-- Big button style -->
+    <Style TargetType="{x:Type Button}" x:Key="ButtonBig" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Padding" Value="15 10 15 10" />
+        <Setter Property="Margin" Value="0 5 0 15" />
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+        <Setter Property="Background" Value="{StaticResource PrimaryMainBrush}" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="3"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            Cursor="{TemplateBinding Cursor}">
+
+                        <Grid>
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalAlignment}" />
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="{StaticResource AccentMain}"
+                                                    Duration="0:0:0.3"
+                                                    Storyboard.TargetName="ButtonBorder"
+                                                    Storyboard.TargetProperty="Background.Color" />
+
+                                    <ColorAnimation To="White"
+                                                    Duration="0:0:0.3"
+                                                    Storyboard.TargetProperty="Foreground.Color" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="{StaticResource PrimaryMain}"
+                                                    Duration="0:0:0.3"
+                                                    Storyboard.TargetName="ButtonBorder"
+                                                    Storyboard.TargetProperty="Background.Color" />
+
+                                    <ColorAnimation To="Black"
+                                                    Duration="0:0:0.3"
+                                                    Storyboard.TargetProperty="Foreground.Color" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <!-- Accent average button -->
+    <Style TargetType="{x:Type Button}" x:Key="ButtonAccentAverage" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="{StaticResource AccentMainBrush}" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Border x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="3"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            Cursor="{TemplateBinding Cursor}">
+                        <ContentPresenter />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="{StaticResource AccentDark}"
+                                                    Duration="0:0:0.3"
+                                                    Storyboard.TargetName="ButtonBorder"
+                                                    Storyboard.TargetProperty="Background.Color" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="{StaticResource AccentMain}"
+                                                    Duration="0:0:0.3"
+                                                    Storyboard.TargetName="ButtonBorder"
+                                                    Storyboard.TargetProperty="Background.Color" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <!-- Confirmation button -->
+    <Style TargetType="{x:Type Button}" x:Key="ButtonConfirmation" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="LimeGreen" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Border x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="3"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            Cursor="{TemplateBinding Cursor}">
+                        <ContentPresenter />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="Green"
+                                                    Duration="0:0:0.2"
+                                                    Storyboard.TargetName="ButtonBorder"
+                                                    Storyboard.TargetProperty="Background.Color" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="LimeGreen"
+                                                    Duration="0:0:0.2"
+                                                    Storyboard.TargetName="ButtonBorder"
+                                                    Storyboard.TargetProperty="Background.Color" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    
+    <!-- Cancel button -->
+    <Style TargetType="{x:Type Button}" x:Key="ButtonCancel" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="Red" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Border x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="3"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            Cursor="{TemplateBinding Cursor}">
+                        <ContentPresenter />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="DarkRed"
+                                                    Duration="0:0:0.2"
+                                                    Storyboard.TargetName="ButtonBorder"
+                                                    Storyboard.TargetProperty="Background.Color" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="Red"
+                                                    Duration="0:0:0.2"
+                                                    Storyboard.TargetName="ButtonBorder"
+                                                    Storyboard.TargetProperty="Background.Color" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    
+    <!-- Rounded green icon button -->
+    <Style TargetType="{x:Type Button}" x:Key="RoundedGreenIconButton" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="Green" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Grid>
+                        <Ellipse Height="20" Width="20">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Offset="0"
+                                          Color="Green" />
+                                    <GradientStop Offset="1"
+                                          Color="Green" />
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="Green"
+                                                    Storyboard.TargetProperty="Background.Color"
+                                                    Duration="0:0:0" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Rounded red icon button -->
+    <Style TargetType="{x:Type Button}" x:Key="RoundedRedIconButton" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="Red" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Grid>
+                        <Ellipse Height="20" Width="20">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Offset="0"
+                                          Color="Red" />
+                                    <GradientStop Offset="1"
+                                          Color="Red" />
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="Green"
+                                                    Storyboard.TargetProperty="Background.Color"
+                                                    Duration="0:0:0" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Hoverless, transparent button style -->
+    <Style TargetType="{x:Type Button}" x:Key="ButtonHoverless" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="0 0 0 10" />
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansRegular}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+        <Setter Property="Foreground" Value="{StaticResource AccentMainBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Border x:Name="TransparentBorder"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            Cursor="{TemplateBinding Cursor}">
+
+                        <Grid>
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       FontFamily="{TemplateBinding FontFamily}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalAlignment}" />
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="Transparent"
+                                                    Storyboard.TargetName="TransparentBorder"
+                                                    Storyboard.TargetProperty="Background.Color"
+                                                    Duration="0:0:0" />
+
+                                    <ColorAnimation To="{StaticResource AccentMain}"
+                                                    Storyboard.TargetProperty="Foreground.Color"
+                                                    Duration="0:0:0" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="LightGray" />
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+    
+    <!-- Hoverless, transparent icon button style -->
+    <Style TargetType="{x:Type Button}" x:Key="HoverlessIconButton" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <ContentPresenter />
+
+                    <ControlTemplate.Triggers>
+
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="Transparent"
+                                                    Storyboard.TargetProperty="Background.Color"
+                                                    Duration="0:0:0" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Window button style -->
+    <Style TargetType="{x:Type Button}" x:Key="WindowIconButton" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource SecondaryLightBrush}" />
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <ContentPresenter />
+
+                    <ControlTemplate.Triggers>
+
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="{StaticResource SecondaryMain}"
+                                                    Storyboard.TargetProperty="Foreground.Color"
+                                                    Duration="0:0:0" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+
+                                    <ColorAnimation To="{StaticResource SecondaryLight}"
+                                                    Storyboard.TargetProperty="Foreground.Color"
+                                                    Duration="0:0:0" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Navigation icon button style -->
+    <Style TargetType="{x:Type Button}" x:Key="NavigationIconButton">
+        
+    </Style>
+
+</ResourceDictionary>

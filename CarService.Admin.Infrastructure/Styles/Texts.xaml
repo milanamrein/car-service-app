@@ -1,0 +1,184 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CarService.Admin.Infrastructure.Styles">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+        <ResourceDictionary Source="Fonts.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Dashboard text -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="Dashboard">
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+        <Setter Property="Foreground" Value="{StaticResource SecondaryMainBrush}" />
+        <Setter Property="Margin" Value="10 0 0 0" />
+    </Style>
+    
+    <!-- Menu title textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="MenuTitle">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="Foreground" Value="{StaticResource AccentMainBrush}" />
+    </Style>
+
+    <!-- Profile fullname textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ProfileFullName">
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansRegular}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+        <Setter Property="Foreground" Value="{StaticResource SecondaryLightBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    
+    <!-- User info textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="UserInfo">
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansLight}" />
+        <Setter Property="Foreground" Value="{StaticResource SecondaryLightBrush}" />
+        <Setter Property="Margin" Value="0 0 0 5" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!-- Reservation details textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ReservationDetails">
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+        <Setter Property="Foreground" Value="{StaticResource AccentMainBrush}" />
+    </Style>
+    
+    <!-- Worksheet table header textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="WorksheetTableHeader">
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    
+    <!-- Base message textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="BaseMessage">
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansRegular}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <!-- Error message textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ErrorMessage" BasedOn="{StaticResource BaseMessage}">
+        <Setter Property="Foreground" Value="Red" />
+    </Style>
+    
+    <!-- Error box message textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ErrorBoxMessage" BasedOn="{StaticResource ErrorMessage}">
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+    </Style>
+
+    <!-- Success message textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="SuccessMessage" BasedOn="{StaticResource BaseMessage}">
+        <Setter Property="Foreground" Value="LightGreen" />
+    </Style>
+
+    <!-- Success box message textblock -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="SuccessBoxMessage" BasedOn="{StaticResource SuccessMessage}">
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+    </Style>
+
+    <!-- Default label style -->
+    <Style TargetType="{x:Type Label}" x:Key="LabelDefault">
+        <Setter Property="FontFamily" Value="{StaticResource OpensSansSemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+    </Style>
+
+    <!-- Authentication label style -->
+    <Style TargetType="{x:Type Label}" x:Key="AuthLabel" BasedOn="{StaticResource LabelDefault}">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryDarkBrush}" />
+    </Style>
+
+    <!-- Authentication textbox -->
+    <Style TargetType="{x:Type TextBox}" x:Key="AuthTextbox">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="10 0 10 10" />
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryDarkBrush}" />
+    </Style>
+
+    <!-- PasswordBox style -->
+    <Style TargetType="{x:Type PasswordBox}" x:Key="PasswordBoxStyle">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="10 0 10 10" />
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryDarkBrush}" />
+    </Style>
+
+    <!-- Base icon style -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockIconBase">
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5 0 0 0" />
+    </Style>
+
+    <!-- Logo icon -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="LogoIcon" BasedOn="{StaticResource TextBlockIconBase}">
+        <Setter Property="Foreground" Value="{StaticResource AccentMainBrush}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSemiLarge}" />
+    </Style>
+    
+    <!-- Big icon with AccentMainBrush color -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockIconLargeAccentMain" BasedOn="{StaticResource TextBlockIconBase}">
+        <Setter Property="Foreground" Value="{StaticResource AccentMainBrush}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}" />
+    </Style>
+    
+    <!-- Navigation icon style -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="NavigationIcon" BasedOn="{StaticResource TextBlockIconBase}">
+        <Setter Property="Foreground" Value="{StaticResource PrimaryMainBrush}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+    
+    <!-- Error message icon -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ErrorMessageIcon" BasedOn="{StaticResource TextBlockIconBase}">
+        <Setter Property="Margin" Value="0 0 5 0" />
+        <Setter Property="Foreground" Value="Red" />
+    </Style>
+
+    <!-- Success message icon -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="SuccessMessageIcon" BasedOn="{StaticResource TextBlockIconBase}">
+        <Setter Property="Margin" Value="0 0 5 0" />
+        <Setter Property="Foreground" Value="LightGreen" />
+    </Style>
+    
+    <!-- Profile icon -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="ProfileIcon">
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeVeryLarge}" />
+        <Setter Property="Foreground" Value="{StaticResource SecondaryLightBrush}" />
+    </Style>
+    
+    <!-- White average icon -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="WhiteAverageIcon">
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    
+    <!-- Add icon -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="AddIcon">
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+        <Setter Property="Foreground" Value="ForestGreen" />
+    </Style>
+
+    <!-- Remove icon -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="RemoveIcon">
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesome}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}" />
+        <Setter Property="Foreground" Value="DarkRed" />
+    </Style>
+    
+    <!-- Window icon -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="WindowIcon" BasedOn="{StaticResource TextBlockIconBase}">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeAverage}" />
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="CarService.Admin.Modules.Auth.Views.AuthNavigation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarService.Admin.Modules.Auth.Views"
+             xmlns:sharedConverters="clr-namespace:CarService.Admin.Infrastructure.ValueConverters;assembly=CarService.Admin.Infrastructure"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CarService.Admin.Infrastructure;component/Styles/SharedResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Login button with icon -->
+        <Grid Grid.Row="0">
+
+            <Button Style="{StaticResource NavigationButton}"
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="Login">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="Login" />
+                    
+                    <Border Grid.Column="1">
+                        <Grid HorizontalAlignment="Center">
+                            <TextBlock Text="{StaticResource FontAwesomeUser}"
+                               Style="{StaticResource NavigationIcon}" />
+                        </Grid>
+                    </Border>
+                    
+                </Grid>
+
+            </Button>
+
+        </Grid>
+
+        <!-- Register button with icon -->
+        <Grid Grid.Row="1">
+            
+            <Button Style="{StaticResource NavigationButton}"
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="Register">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Text="Register" Grid.Column="0" />
+
+                    <Border Grid.Column="1">
+                        <Grid HorizontalAlignment="Center">
+                            <TextBlock Text="{StaticResource FontAwesomeUserPlus}"
+                               Style="{StaticResource NavigationIcon}" />
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </Button>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

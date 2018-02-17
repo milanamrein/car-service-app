@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="CarService.Admin.Modules.Worksheet.Views.CreateWorksheet"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarService.Admin.Modules.Worksheet.Views"
+             xmlns:sharedConverters="clr-namespace:CarService.Admin.Infrastructure.ValueConverters;assembly=CarService.Admin.Infrastructure"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CarService.Admin.Infrastructure;component/Styles/SharedResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Border Background="White"
+            MaxWidth="300" Height="Auto"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Padding="20">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Are you sure you want to create this worksheet?"
+                       Grid.Row="0" Style="{StaticResource ProfileFullName}"
+                       Foreground="{StaticResource AccentMainBrush}"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center" />
+
+            <!-- Progress bar -->
+            <ProgressBar Grid.Row="1"
+                         IsIndeterminate="True"
+                         Style="{StaticResource DefaultProgressBar}"
+                         Visibility="{Binding IsLoading, 
+                            Converter={sharedConverters:IsLoadingVisibilityValueConverter}}"></ProgressBar>
+            
+            <Grid Grid.Row="2"
+                  Visibility="{Binding IsLoading,
+                    Converter={sharedConverters:IsLoadedVisibilityValueConverter}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button Margin="0 0 5 0" Grid.Column="0"
+                        Style="{StaticResource ButtonConfirmation}"
+                        Command="{Binding CreateWorksheetCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{StaticResource FontAwesomeSuccess}"
+                                   Style="{StaticResource SuccessMessageIcon}" />
+                        <TextBlock Text="Yes" />
+                    </StackPanel>
+                </Button>
+                <Button Margin="0 0 5 0" Grid.Column="2"
+                        Style="{StaticResource ButtonCancel}"
+                        Command="{Binding NavigateCommand}"
+                        CommandParameter="AddWorksheet">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{StaticResource FontAwesomeCancel}"
+                                   Style="{StaticResource ErrorMessageIcon}"
+                                   Foreground="White" />
+                        <TextBlock Text="No" />
+                    </StackPanel>
+                </Button>
+
+            </Grid>
+
+        </Grid>
+        
+    </Border>
+    
+</UserControl>

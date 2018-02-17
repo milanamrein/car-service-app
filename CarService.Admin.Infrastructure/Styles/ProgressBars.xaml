@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CarService.Admin.Infrastructure.Styles">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Default progress bar -->
+    <Style TargetType="{x:Type ProgressBar}" x:Key="DefaultProgressBar">
+        <Setter Property="Height" Value="3" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="{StaticResource PrimaryMainBrush}" />
+    </Style>
+    
+    <!-- Main progress bar -->
+    <Style TargetType="{x:Type ProgressBar}" x:Key="MainProgressBar" BasedOn="{StaticResource DefaultProgressBar}">
+        <Setter Property="Height" Value="7" />
+    </Style>
+    
+</ResourceDictionary>

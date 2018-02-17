@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="CarService.Admin.Modules.Auth.Views.Login"
+             x:Name="LoginPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarService.Admin.Modules.Auth.Views"
+             xmlns:propa="clr-namespace:CarService.Admin.Modules.Auth.Attached_Properties"
+             xmlns:sharedConverters="clr-namespace:CarService.Admin.Infrastructure.ValueConverters;assembly=CarService.Admin.Infrastructure"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CarService.Admin.Infrastructure;component/Styles/SharedResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Border Style="{StaticResource AuthBox}">
+
+        <StackPanel Width="200"
+                    HorizontalAlignment="Center">
+
+            <!-- Login -->
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0 10 0 15">
+                <TextBlock Text="Login" 
+                           Style="{StaticResource MenuTitle}" />
+                <TextBlock Text="{StaticResource FontAwesomeUser}"
+                           Style="{StaticResource TextBlockIconLargeAccentMain}" />
+            </StackPanel>
+
+            <!-- Progress bar -->
+            <ProgressBar IsIndeterminate="True"
+                         Style="{StaticResource DefaultProgressBar}"
+                         Visibility="{Binding IsButtonEnabled, 
+                            Converter={sharedConverters:IsLoadedVisibilityValueConverter}}"></ProgressBar>
+
+            <!-- Success message -->
+            <Border Padding="5 0 5 0"
+                    Visibility="{Binding SuccessMessage, 
+                        Converter={sharedConverters:StringContentToVisibilityValueConverter}}">
+                <DockPanel LastChildFill="True">
+                    <TextBlock DockPanel.Dock="Left"
+                               Text="{StaticResource FontAwesomeSuccess}"
+                               Style="{StaticResource SuccessMessageIcon}" />
+                    <TextBlock Text="{Binding SuccessMessage}" 
+                               Style="{StaticResource SuccessMessage}"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center" />
+                </DockPanel>
+            </Border>
+
+            <!-- Error message -->
+            <Border Padding="5 0 5 0"
+                    Visibility="{Binding ErrorMessage, 
+                        Converter={sharedConverters:StringContentToVisibilityValueConverter}}">
+                <DockPanel LastChildFill="True">
+                    <TextBlock DockPanel.Dock="Left"
+                               Text="{StaticResource FontAwesomeError}"
+                               Style="{StaticResource ErrorMessageIcon}" />
+                    <TextBlock Text="{Binding ErrorMessage}"
+                               Style="{StaticResource ErrorMessage}"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center" />
+                </DockPanel>
+            </Border>
+
+            <!-- Username -->
+            <Label Content="Username"
+                   Style="{StaticResource AuthLabel}" />
+            <TextBox Style="{StaticResource AuthTextbox}" Text="{Binding Username}" />
+
+            <!-- Password -->
+            <Label Content="Password"
+                   Style="{StaticResource AuthLabel}" />
+            <PasswordBox Style="{StaticResource PasswordBoxStyle}"
+                         x:Name="passwordBox" />
+
+            <!-- Sign In button -->
+            <Button Content="Sign In"
+                    Style="{StaticResource ButtonBig}"
+                    Command="{Binding LoginCommand}" 
+                    CommandParameter="{Binding ElementName=LoginPage}"
+                    IsEnabled="{Binding IsButtonEnabled}" />
+
+            <!-- To register page -->
+            <Button Content="I haven't signed up yet"
+                    Style="{StaticResource ButtonHoverless}"
+                    Command="{Binding NavigateCommand}" 
+                    CommandParameter="Register" 
+                    IsEnabled="{Binding IsButtonEnabled}" />
+
+        </StackPanel>
+
+    </Border>
+
+</UserControl>

@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="CarService.Admin.Modules.Worksheet.Views.Worksheet"
+             x:Name="WorksheetPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CarService.Admin.Modules.Worksheet.Views"
+             xmlns:partials="clr-namespace:CarService.Admin.Modules.Worksheet.Views.Partials"
+             xmlns:sharedViews="clr-namespace:CarService.Admin.Infrastructure.Views;assembly=CarService.Admin.Infrastructure"             
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CarService.Admin.Infrastructure;component/Styles/SharedResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Error Messages -->
+        <sharedViews:ErrorMessageBox Grid.Row="0" />
+
+        <!-- Table -->
+        <Border Grid.Row="1" Padding="15">
+            <Border BorderThickness="1"
+                BorderBrush="Black"
+                Background="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Table header -->
+                    <partials:WorksheetTableHeader Grid.Row="0" />
+
+                    <!-- Table body -->
+                    <ItemsControl Grid.Row="1" 
+                        ItemsSource="{Binding Materials}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+
+                                <Border BorderBrush="Black" BorderThickness="0 0 0 1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Blank column -->
+                                        <Border Grid.Column="0"
+                                            BorderBrush="Black"
+                                            BorderThickness="0 0 1 0" />
+
+                                        <!-- Material -->
+                                        <partials:MaterialsListItem Grid.Column="1" />
+
+                                    </Grid>
+                                </Border>
+
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <!-- Total price -->
+                    <partials:TotalPrice Grid.Row="2" />
+
+                </Grid>
+            </Border>
+        </Border>
+
+    </Grid>
+
+</UserControl>

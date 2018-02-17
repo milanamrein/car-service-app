@@ -1,0 +1,224 @@
+﻿<Window x:Class="CarService.Admin.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarService.Admin"
+        xmlns:str="clr-namespace:CarService.Admin.Infrastructure;assembly=CarService.Admin.Infrastructure"
+        xmlns:sharedConverters="clr-namespace:CarService.Admin.Infrastructure.ValueConverters;assembly=CarService.Admin.Infrastructure"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Title="Car Service - Administration" 
+        MinHeight="400" MinWidth="600">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CarService.Admin.Infrastructure;component/Styles/SharedResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        
+            <Style TargetType="{x:Type local:Shell}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Window}">
+
+                            <Border Background="{StaticResource PrimaryLightBrush}">
+                                <Grid>
+
+                                    <!-- Window header -->
+                                    <Grid>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="15" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Border Grid.Row="0" Panel.ZIndex="99"
+                                                Background="{StaticResource SecondaryVeryLightBrush}"
+                                                BorderBrush="{StaticResource SecondaryLightBrush}"
+                                                BorderThickness="0 0 0 1" />
+
+                                        <Border Background="{StaticResource SecondaryVeryLightBrush}"
+                                                Grid.Row="1" Panel.ZIndex="99">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Window title -->
+                                                <Border Grid.Column="1" Panel.ZIndex="99"
+                                                        Padding="10">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="0.1" Opacity="0.5"
+                                                                          Color="{StaticResource SecondaryMain}" />
+                                                    </Border.Effect>
+                                                    
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <StackPanel Grid.Column="0"
+                                                                    Orientation="Horizontal">
+                                                            <Image Source="favicon.ico" Width="25" Height="25" />
+                                                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, 
+                                                                        Path=Title}" VerticalAlignment="Center"
+                                                                       Style="{StaticResource Dashboard}" />
+                                                        </StackPanel>
+
+                                                        <!-- Window Buttons -->
+                                                        <StackPanel Grid.Column="2" 
+                                                                    Orientation="Horizontal">
+                                                            <Button Style="{StaticResource WindowIconButton}"
+                                                                    Command="{Binding MinimizeCommand}">
+                                                                <TextBlock Style="{StaticResource WindowIcon}"
+                                                                    Text="{StaticResource FontAwesomeWindowMinimize}"  />
+                                                            </Button>
+                                                            <Button Style="{StaticResource WindowIconButton}"
+                                                                    Command="{Binding MaximizeCommand}">
+                                                                <Grid>
+                                                                    <TextBlock Style="{StaticResource WindowIcon}"
+                                                                               Text="{StaticResource FontAwesomeWindowMaximize}" 
+                                                                               Visibility="{Binding ShowRestoreButton,
+                                                                                   Converter={sharedConverters:IsLoadedVisibilityValueConverter}}" />
+                                                                    <TextBlock Style="{StaticResource WindowIcon}"
+                                                                               Text="{StaticResource FontAwesomeWindowRestore}"
+                                                                               Visibility="{Binding ShowRestoreButton,
+                                                                                   Converter={sharedConverters:IsLoadingVisibilityValueConverter}}" />
+                                                                </Grid>
+                                                            </Button>
+                                                            <Button Style="{StaticResource WindowIconButton}"
+                                                                    Command="{Binding CloseCommand}">
+                                                                <TextBlock Style="{StaticResource WindowIcon}"
+                                                                    Text="{StaticResource FontAwesomePowerOff}"  />
+                                                            </Button>
+                                                        </StackPanel>
+
+                                                    </Grid>
+                                                </Border>
+
+                                            </Grid>
+                                        </Border>
+
+                                        <!-- Window Content -->
+                                        <Border Grid.Row="2" ClipToBounds="True">
+                                            <ContentPresenter Content="{TemplateBinding Content}" />
+                                        </Border>
+
+                                    </Grid>
+
+                                </Grid>
+                            </Border>
+
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!-- Making the window resizable -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            ResizeBorderThickness="7" 
+            CaptionHeight="10"
+            CornerRadius="5"
+            GlassFrameThickness="0" />
+    </WindowChrome.WindowChrome>
+
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Navigation bar -->
+                <Border Grid.Column="0"
+                    Background="{StaticResource SecondaryMainBrush}">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- User profile Region -->
+                        <Border Grid.Row="0">
+                            
+                            <ContentControl prism:RegionManager.RegionName="{x:Static 
+                                    str:RegionNames.PROFILE_REGION}" />
+
+                        </Border>
+
+                        <!-- Navbar Region -->
+                        <Border Grid.Row="1">
+
+                            <ContentControl prism:RegionManager.RegionName="{x:Static 
+                                str:RegionNames.NAVBAR_REGION}" />
+
+                        </Border>
+
+                    </Grid>
+
+                </Border>
+
+                <!-- Window Content -->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Shade beyond Window Title -->
+                    <Rectangle Grid.Row="0">
+                        <Rectangle.Fill>
+
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" >
+
+                                <GradientStop Color="Transparent" Offset="0" />
+
+                                <GradientStop Color="{StaticResource PrimaryDark}" Offset="0.5" />
+                                
+                                <GradientStop Color="Transparent" Offset="1" />
+
+                            </LinearGradientBrush>
+
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    
+                    <!-- Content region -->
+                    <ScrollViewer Grid.Row="2"  
+                                VerticalScrollBarVisibility="Auto"
+                                HorizontalScrollBarVisibility="Disabled">
+
+                        <ContentControl prism:RegionManager.RegionName="{x:Static 
+                                str:RegionNames.CONTENT_REGION}" />
+
+                    </ScrollViewer>
+                    
+                </Grid>
+                
+            </Grid>
+
+        </Grid>
+        
+    </Border>
+
+</Window>

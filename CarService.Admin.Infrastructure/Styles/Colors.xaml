@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CarService.Admin.Infrastructure.Styles">
+
+    <!-- Primary colors -->
+    <Color x:Key="PrimaryLight">#DEF7FF</Color>
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource PrimaryLight}" />
+    <Color x:Key="PrimaryMain">#64b5f6</Color>
+    <SolidColorBrush x:Key="PrimaryMainBrush" Color="{StaticResource PrimaryMain}" />
+    <Color x:Key="PrimaryDark">#2286c3</Color>
+    <SolidColorBrush x:Key="PrimaryDarkBrush" Color="{StaticResource PrimaryDark}" />
+
+    <!-- Secondary colors -->
+    <Color x:Key="SecondaryMain">#313536</Color>
+    <SolidColorBrush x:Key="SecondaryMainBrush" Color="{StaticResource SecondaryMain}" />
+    <Color x:Key="SecondaryVeryLight">#F2F2F2</Color>
+    <SolidColorBrush x:Key="SecondaryVeryLightBrush" Color="{StaticResource SecondaryVeryLight}" />
+    <Color x:Key="SecondaryLight">#C9C9C9</Color>
+    <SolidColorBrush x:Key="SecondaryLightBrush" Color="{StaticResource SecondaryLight}" />
+
+    <!-- Accent colors -->
+    <Color x:Key="AccentLight">#534bae</Color>
+    <SolidColorBrush x:Key="AccentLightBrush" Color="{StaticResource AccentLight}" />
+    <Color x:Key="AccentMain">#1a237e</Color>
+    <SolidColorBrush x:Key="AccentMainBrush" Color="{StaticResource AccentMain}" />
+    <Color x:Key="AccentDark">#000051</Color>
+    <SolidColorBrush x:Key="AccentDarkBrush" Color="{StaticResource AccentDark}" />
+
+</ResourceDictionary>
