@@ -14,7 +14,8 @@ namespace CarService.Admin
 {
     /// <summary>
     /// Bootstrapper of the application
-    /// Initialize all the services that we going to be using
+    /// Initializes all the services, modules etc. 
+    /// that we are going to be using
     /// </summary>
     public class Bootstrapper : UnityBootstrapper
     {
@@ -44,9 +45,9 @@ namespace CarService.Admin
         {
             base.ConfigureContainer();
 
-            // Registering base Navigation and Persistence Services
+            // Registering base Navigation and Services
             Container.RegisterType<INavigation, Navigation>();
-            Container.RegisterType<ICarServicePersistence, CarServicePersistence>();
+            Container.RegisterType<ICarService, CarService.Admin.Infrastructure.Services.CarService>();
             Container.RegisterType<IAuthService, AuthService>();
             Container.RegisterType<IMechanicService, MechanicService>();
             Container.RegisterType<IMaterialService, MaterialService>();

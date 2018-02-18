@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CarService.Admin.Infrastructure.Services
 {
     /// <summary>
-    /// Persistence Service interface for worksheets
+    /// Service interface for worksheets
     /// </summary>
     public interface IWorksheetService
     {

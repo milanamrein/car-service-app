@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace CarService.Admin.Infrastructure.Services
 {
     /// <summary>
-    /// Persistence Service interface for mechanics
+    /// Service interface for mechanics
     /// </summary>
     public interface IMechanicService
     {

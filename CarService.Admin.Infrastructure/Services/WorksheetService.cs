@@ -12,16 +12,16 @@ using System.Net;
 namespace CarService.Admin.Infrastructure.Services
 {
     /// <summary>
-    /// Worksheet Persistence Service
+    /// Worksheet Service
     /// </summary>
     public class WorksheetService : IWorksheetService
     {
         #region Fields
 
         /// <summary>
-        /// Base Persistence Service providing HttpClient
+        /// Base Service
         /// </summary>
-        private ICarServicePersistence _carService;
+        private ICarService _carService;
 
         /// <summary>
         /// Base url
@@ -32,7 +32,7 @@ namespace CarService.Admin.Infrastructure.Services
 
         #region Default Constructor
 
-        public WorksheetService(ICarServicePersistence carService)
+        public WorksheetService(ICarService carService)
         {
             _carService = carService;
             _url = _carService.Client.BaseAddress + "worksheets/";

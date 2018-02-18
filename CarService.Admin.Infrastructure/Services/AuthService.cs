@@ -13,16 +13,16 @@ using System.Collections.ObjectModel;
 namespace CarService.Admin.Infrastructure.Services
 {
     /// <summary>
-    /// Authentication Persistence Service
+    /// Authentication Service
     /// </summary>
     public class AuthService : IAuthService
     {
         /// <summary>
-        /// Base Persistence Service
+        /// Base Service
         /// </summary>
-        private readonly ICarServicePersistence _carService;
+        private readonly ICarService _carService;
 
-        public AuthService(ICarServicePersistence carService)
+        public AuthService(ICarService carService)
         {
             _carService = carService;
         }

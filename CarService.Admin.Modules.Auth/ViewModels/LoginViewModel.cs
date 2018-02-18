@@ -18,7 +18,7 @@ namespace CarService.Admin.Modules.Auth.ViewModels
         #region Fields
 
         /// <summary>
-        /// Authentication Persistence Service
+        /// Authentication Service
         /// </summary>
         private IAuthService _authService;
 

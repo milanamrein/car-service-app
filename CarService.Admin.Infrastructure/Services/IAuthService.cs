@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace CarService.Admin.Infrastructure.Services
 {
     /// <summary>
-    /// Authentication Persistence Service Interface
+    /// Authentication Service Interface
     /// </summary>
     public interface IAuthService
     {

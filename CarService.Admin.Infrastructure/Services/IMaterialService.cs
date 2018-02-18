@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CarService.Admin.Infrastructure.Services
 {
     /// <summary>
-    /// Persistence Service interface for materials
+    /// Service interface for materials
     /// </summary>
     public interface IMaterialService
     {

@@ -26,7 +26,7 @@ namespace CarService.Admin.Modules.Reservation.ViewModels
         private readonly INavigation _navigation;
 
         /// <summary>
-        /// Reservations Persistence Service
+        /// Mechanic Service
         /// </summary>
         private readonly IMechanicService _mechanicService;
 

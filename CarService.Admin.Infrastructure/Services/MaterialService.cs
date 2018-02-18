@@ -7,16 +7,16 @@ using CarService.DTO;
 namespace CarService.Admin.Infrastructure.Services
 {
     /// <summary>
-    /// Materials Persistence Service
+    /// Materials Service
     /// </summary>
     public class MaterialService : IMaterialService
     {
         #region Fields
 
         /// <summary>
-        /// Base Persistence Service providing HttpClient
+        /// Base Service
         /// </summary>
-        private ICarServicePersistence _carService;
+        private ICarService _carService;
 
         /// <summary>
         /// Base url
@@ -27,7 +27,7 @@ namespace CarService.Admin.Infrastructure.Services
 
         #region Default Constructor
 
-        public MaterialService(ICarServicePersistence carService)
+        public MaterialService(ICarService carService)
         {
             _carService = carService;
             _url = _carService.Client.BaseAddress + "materials/";

@@ -1,7 +1,6 @@
 ﻿using CarService.Admin.Infrastructure.Events;
 using CarService.Admin.Infrastructure.Prism;
 using CarService.Admin.Infrastructure.Services;
-using CarService.Admin.Modules.Worksheet.Events;
 using CarService.DTO;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -19,7 +18,7 @@ namespace CarService.Admin.Modules.Worksheet.ViewModels
         #region Fields
 
         /// <summary>
-        /// Worksheet Persistence Service
+        /// Worksheet Service
         /// </summary>
         private readonly IWorksheetService _worksheetService;
 

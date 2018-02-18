@@ -96,6 +96,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\CreateWorksheetFailedEvent.cs" />
     <Compile Include="Events\RegistrationSuccessfulEvent.cs" />
     <Compile Include="Events\UnexpectedErrorEvent.cs" />
     <Compile Include="Events\WorksheetCreatedSuccessfullyEvent.cs" />
@@ -105,9 +106,9 @@
     <Compile Include="Helpers\RegistrationResult.cs" />
     <Compile Include="Prism\INavigation.cs" />
     <Compile Include="Services\AuthService.cs" />
-    <Compile Include="Services\CarServicePersistence.cs" />
+    <Compile Include="Services\CarService.cs" />
     <Compile Include="Services\IAuthService.cs" />
-    <Compile Include="Services\ICarServicePersistence.cs" />
+    <Compile Include="Services\ICarService.cs" />
     <Compile Include="Services\IMaterialService.cs" />
     <Compile Include="Services\IMechanicService.cs" />
     <Compile Include="Services\IWorksheetService.cs" />
