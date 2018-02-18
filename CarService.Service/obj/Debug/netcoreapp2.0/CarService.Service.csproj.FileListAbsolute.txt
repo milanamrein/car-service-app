@@ -1,0 +1,13 @@
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\bin\Debug\netcoreapp2.0\CarService.Service.deps.json
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\bin\Debug\netcoreapp2.0\CarService.Service.runtimeconfig.json
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\bin\Debug\netcoreapp2.0\CarService.Service.runtimeconfig.dev.json
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\bin\Debug\netcoreapp2.0\CarService.Service.dll
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\bin\Debug\netcoreapp2.0\CarService.Service.pdb
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\bin\Debug\netcoreapp2.0\CarService.DTO.dll
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\bin\Debug\netcoreapp2.0\CarService.DTO.pdb
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\obj\Debug\netcoreapp2.0\CarService.Service.csprojResolveAssemblyReference.cache
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\obj\Debug\netcoreapp2.0\CarService.Service.csproj.CoreCompileInputs.cache
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\obj\Debug\netcoreapp2.0\CarService.Service.AssemblyInfoInputs.cache
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\obj\Debug\netcoreapp2.0\CarService.Service.AssemblyInfo.cs
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\obj\Debug\netcoreapp2.0\CarService.Service.dll
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.Service\obj\Debug\netcoreapp2.0\CarService.Service.pdb

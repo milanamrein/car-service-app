@@ -17,9 +17,9 @@
     "CarService": {
       "commandName": "IISExpress",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       },
-      "applicationUrl": "http://localhost:53176/"
+      "applicationUrl": "http://carservice-2.apphb.com/"
     }
   }
 }

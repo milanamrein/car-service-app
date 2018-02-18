@@ -36,7 +36,7 @@ namespace CarService.Service
             // enabling Cross-Origin Resource Sharing so that the front-end can get the HTTP response
             services.AddCors(options => options
                 .AddPolicy("CorsPolicy", policy => 
-                    policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
+                    policy.WithOrigins(Configuration["Client"]).AllowAnyHeader().AllowAnyMethod()));
 
             // adding Identity
             services.AddIdentity<User, IdentityRole>()

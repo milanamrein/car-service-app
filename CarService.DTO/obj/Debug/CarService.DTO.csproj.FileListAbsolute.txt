@@ -1,0 +1,7 @@
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.DTO\bin\Debug\CarService.DTO.dll
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.DTO\bin\Debug\CarService.DTO.pdb
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.DTO\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.DTO\obj\Debug\CarService.DTO.csproj.CoreCompileInputs.cache
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.DTO\obj\Debug\CarService.DTO.dll
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.DTO\obj\Debug\CarService.DTO.pdb
+C:\Users\MILAN\documents\visual studio 2017\Projects\CarService\CarService.DTO\obj\Debug\CarService.DTO.csprojResolveAssemblyReference.cache
