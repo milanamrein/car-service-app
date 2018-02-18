@@ -126,7 +126,6 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <!-- Making the window resizable -->
     <WindowChrome.WindowChrome>
         <WindowChrome 
             ResizeBorderThickness="7" 
@@ -186,7 +185,6 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <!-- Shade beyond Window Title -->
                     <Rectangle Grid.Row="0">
                         <Rectangle.Fill>
 
